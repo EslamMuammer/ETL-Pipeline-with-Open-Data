@@ -1,0 +1,40 @@
+2026-04-25 13:40:53,398 | INFO | Stage 1 Started
+2026-04-25 13:40:54,352 | INFO | orders | 99,441 rows | 8 cols | missing: {'order_approved_at': 160, 'order_delivered_carrier_date': 1783, 'order_delivered_customer_date': 2965} | dups: 0
+2026-04-25 13:40:54,557 | INFO | customers | 99,441 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:40:54,861 | INFO | order_items | 112,650 rows | 7 cols | missing: {} | dups: 0
+2026-04-25 13:40:55,020 | INFO | payments | 103,886 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:40:55,444 | INFO | reviews | 99,224 rows | 7 cols | missing: {'review_comment_title': 87656, 'review_comment_message': 58247} | dups: 0
+2026-04-25 13:40:55,537 | INFO | products | 32,951 rows | 9 cols | missing: {'product_category_name': 610, 'product_name_lenght': 610, 'product_description_lenght': 610, 'product_photos_qty': 610, 'product_weight_g': 2, 'product_length_cm': 2, 'product_height_cm': 2, 'product_width_cm': 2} | dups: 0
+2026-04-25 13:40:55,562 | INFO | sellers | 3,095 rows | 4 cols | missing: {} | dups: 0
+2026-04-25 13:40:55,579 | INFO | category_translation | 71 rows | 2 cols | missing: {} | dups: 0
+2026-04-25 13:40:55,580 | INFO | Stage 1 Completed Successfully
+2026-04-25 13:48:51,207 | INFO | Stage 1 Started
+2026-04-25 13:48:51,745 | INFO | orders | 99,441 rows | 8 cols | missing: {'order_approved_at': 160, 'order_delivered_carrier_date': 1783, 'order_delivered_customer_date': 2965} | dups: 0
+2026-04-25 13:48:51,935 | INFO | customers | 99,441 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:48:52,220 | INFO | order_items | 112,650 rows | 7 cols | missing: {} | dups: 0
+2026-04-25 13:48:52,348 | INFO | payments | 103,886 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:48:52,747 | INFO | reviews | 99,224 rows | 7 cols | missing: {'review_comment_title': 87656, 'review_comment_message': 58247} | dups: 0
+2026-04-25 13:48:52,813 | INFO | products | 32,951 rows | 9 cols | missing: {'product_category_name': 610, 'product_name_lenght': 610, 'product_description_lenght': 610, 'product_photos_qty': 610, 'product_weight_g': 2, 'product_length_cm': 2, 'product_height_cm': 2, 'product_width_cm': 2} | dups: 0
+2026-04-25 13:48:52,824 | INFO | sellers | 3,095 rows | 4 cols | missing: {} | dups: 0
+2026-04-25 13:48:52,829 | INFO | category_translation | 71 rows | 2 cols | missing: {} | dups: 0
+2026-04-25 13:48:52,829 | INFO | Stage 1 Completed Successfully
+2026-04-25 13:49:00,780 | INFO | Stage 1 Started
+2026-04-25 13:49:01,349 | INFO | orders | 99,441 rows | 8 cols | missing: {'order_approved_at': 160, 'order_delivered_carrier_date': 1783, 'order_delivered_customer_date': 2965} | dups: 0
+2026-04-25 13:49:01,574 | INFO | customers | 99,441 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:49:01,881 | INFO | order_items | 112,650 rows | 7 cols | missing: {} | dups: 0
+2026-04-25 13:49:02,005 | INFO | payments | 103,886 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:49:02,398 | INFO | reviews | 99,224 rows | 7 cols | missing: {'review_comment_title': 87656, 'review_comment_message': 58247} | dups: 0
+2026-04-25 13:49:02,461 | INFO | products | 32,951 rows | 9 cols | missing: {'product_category_name': 610, 'product_name_lenght': 610, 'product_description_lenght': 610, 'product_photos_qty': 610, 'product_weight_g': 2, 'product_length_cm': 2, 'product_height_cm': 2, 'product_width_cm': 2} | dups: 0
+2026-04-25 13:49:02,472 | INFO | sellers | 3,095 rows | 4 cols | missing: {} | dups: 0
+2026-04-25 13:49:02,477 | INFO | category_translation | 71 rows | 2 cols | missing: {} | dups: 0
+2026-04-25 13:49:02,477 | INFO | Stage 1 Completed Successfully
+2026-04-25 13:49:43,166 | INFO | Stage 1 Started
+2026-04-25 13:49:43,711 | INFO | orders | 99,441 rows | 8 cols | missing: {'order_approved_at': 160, 'order_delivered_carrier_date': 1783, 'order_delivered_customer_date': 2965} | dups: 0
+2026-04-25 13:49:43,889 | INFO | customers | 99,441 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:49:44,154 | INFO | order_items | 112,650 rows | 7 cols | missing: {} | dups: 0
+2026-04-25 13:49:44,277 | INFO | payments | 103,886 rows | 5 cols | missing: {} | dups: 0
+2026-04-25 13:49:44,684 | INFO | reviews | 99,224 rows | 7 cols | missing: {'review_comment_title': 87656, 'review_comment_message': 58247} | dups: 0
+2026-04-25 13:49:44,746 | INFO | products | 32,951 rows | 9 cols | missing: {'product_category_name': 610, 'product_name_lenght': 610, 'product_description_lenght': 610, 'product_photos_qty': 610, 'product_weight_g': 2, 'product_length_cm': 2, 'product_height_cm': 2, 'product_width_cm': 2} | dups: 0
+2026-04-25 13:49:44,756 | INFO | sellers | 3,095 rows | 4 cols | missing: {} | dups: 0
+2026-04-25 13:49:44,760 | INFO | category_translation | 71 rows | 2 cols | missing: {} | dups: 0
+2026-04-25 13:49:44,761 | INFO | Stage 1 Completed Successfully
