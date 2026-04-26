@@ -3,7 +3,7 @@ import os
 import logging
 
 # Setup
-os.makedirs("data/parquet", exist_ok=True)
+os.makedirs("data/processed", exist_ok=True)
 os.makedirs("logs", exist_ok=True)
 
 logging.basicConfig(
@@ -87,15 +87,15 @@ for name, path in tables.items():
 
         logging.info("products: category_translation merged, category names now in English")
 
-    # Save as Parquet
-    out = f"data/parquet/{name}.parquet"
+    # Save as CSV
+    out = f"data/processed/{name}.csv"
 
     if name == "category_translation":
         print(f"   Note: category_translation merged into products - role complete")
         logging.info("category_translation: role complete after merge into products")
 
-    df.to_parquet(out, index=False, engine="pyarrow")
-    print(f"   Saved Parquet -> {out}")
+    df.to_csv(out, index=False)
+    print(f"   Saved CSV -> {out}")
 
     logging.info(f"{name} | {len(df):,} rows | {len(df.columns)} cols | missing: {missing.to_dict()} | dups: {dups}")
 
