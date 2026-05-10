@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: Olist_Analysis
+    schema: main
+    description: Brazilian e-commerce dataset capturing the full order lifecycle, including customers, orders, payments, products, and reviews.
+
+    tables:
+      - name: Orders
+        description: Core transactional table representing each order. Contains order status, timestamps (purchase, approval, delivery), and links to customers. Acts as the central hub to join all other datasets.
+
+      - name: Order_Items
+        description: Granular order line items. Each row represents a product within an order, including seller, price, and freight value. Multiple rows can exist per order_id.
+
+      - name: Customers
+        description: Customer dimension table with location data. Each order is assigned a unique customer_id, while customer_unique_id identifies returning customers across multiple orders.
+
+      - name: Order_Payments
+        description: Payment-level details for orders, including payment method, number of installments, and payment value. Supports analysis of payment behavior and revenue composition.
+
+      - name: Order_Reviews
+        description: Customer feedback dataset containing review scores and optional comments. Reviews are collected after delivery or estimated delivery date.
+
+      - name: Products
+        description: Product dimension table with category, size, and weight attributes. Used to analyze product characteristics and their impact on sales and logistics.
+
+      - name: Sellers
+        description: Seller dimension table containing seller location and identification. Enables analysis of seller performance and fulfillment patterns.
+
+      - name: Product_Category_Name_Translation
+        description: Lookup table mapping product category names from Portuguese to English for standardized reporting and analysis.

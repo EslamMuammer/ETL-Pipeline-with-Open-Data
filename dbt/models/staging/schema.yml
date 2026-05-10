@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: "Cleaned and transformed orders data, including purchase timestamps and delivery statuses."
+    columns:
+      - name: order_id
+        description: "Primary key. Unique identifier for each order."
+        tests:
+          - unique
+          - not_null # تم التصحيح هنا
+      - name: customer_id
+        description: "Foreign key linking to the customers table."
+        tests:
+          - not_null # تم التصحيح هنا
+
+  - name: stg_order_items
+    description: "Line-level details for each order, including pricing, freight values, and product associations."
+    columns:
+      - name: order_id
+        description: "Order identifier (non-unique as one order can have multiple items)."
+        tests:
+          - not_null
+      - name: order_item_id
+        description: "Sequential number identifying an item within a specific order."
+        tests:
+          - not_null
+      - name: product_id
+        description: "Unique identifier for the product being sold."
+        tests:
+          - not_null
+
+  - name: stg_customers
+    description: "Customer demographic data, including unique identifiers and geographic distribution."
+    columns:
+      - name: customer_id
+        description: "Key used for the specific purchase session."
+        tests:
+          - unique
+          - not_null
+      - name: customer_unique_id
+        description: "Persistent identifier for the customer across multiple orders."
+        tests:
+          - not_null
+
+  - name: stg_payments
+    description: "Payment details for each transaction, including payment type, installments, and monetary value."
+    columns:
+      - name: order_id
+        description: "Identifier of the order associated with the payment."
+        tests:
+          - not_null
+
+  - name: stg_products
+    description: "Product catalog data with English translations for category names."
+    columns:
+      - name: product_id
+        description: "Primary key for the products table."
+        tests:
+          - unique
+          - not_null
+      - name: product_category
+        description: "Product category name translated into English."
+
+  - name: stg_reviews
+    description: "Customer feedback data. Deduplicated to reflect the most recent review per order."
+    columns:
+      - name: order_id
+        description: "Unique order identifier (post-deduplication)."
+        tests:
+          - unique
+          - not_null 
+      - name: review_id
+        description: "Unique identifier for the review record."
+        tests:
+          - not_null 
+
+  - name: stg_sellers
+    description: "Data regarding registered sellers, including their zip codes and locations."
+    columns:
+      - name: seller_id
+        description: "Unique identifier for the seller."
+        tests:
+          - unique
+          - not_null
