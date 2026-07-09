@@ -36,7 +36,7 @@ datetime_cols = {
         "order_delivered_customer_date",
         "order_estimated_delivery_date"
     ],
-    "reviews":     ["review_creation_date", "review_answer_timestamp"],
+    "reviews": ["review_creation_date", "review_answer_timestamp"],
     "order_items": ["shipping_limit_date"],
 }
 
@@ -46,28 +46,55 @@ for name, path in tables.items():
     print(f"Loading: {name}")
 
     df = pd.read_csv(path)
+
+    # Standardize column names
     df.columns = df.columns.str.lower().str.strip().str.replace(" ", "_")
 
+    # Convert datetime columns + detect invalid dates
     for col in datetime_cols.get(name, []):
         if col in df.columns:
+            original_nulls = df[col].isna().sum()
+
             df[col] = pd.to_datetime(df[col], errors="coerce")
+
+            invalid_dates = df[col].isna().sum() - original_nulls
+
+            print(f"   Invalid dates in {col}: {invalid_dates}")
+            logging.info(f"{name}: Invalid dates in {col}: {invalid_dates}")
 
     print(f"   Rows       : {len(df):,}")
     print(f"   Columns    : {len(df.columns)}")
     print(f"   Col Names  : {list(df.columns)}")
 
+    print("\n   Data Types:")
+    print(df.dtypes)
+
+    logging.info(f"{name} Data Types:\n{df.dtypes}")
+
+    # Schema Validation
+    if df.columns.duplicated().sum() == 0:
+        print("   Schema     : Passed")
+        logging.info(f"{name}: Schema Validation Passed")
+    else:
+        print("   Schema     : Failed (Duplicate column names found)")
+        logging.warning(f"{name}: Schema Validation Failed")
+
+    # Missing Values
     missing = df.isnull().sum()
     missing = missing[missing > 0]
+
     if len(missing) > 0:
         print(f"   Missing    :\n{missing}")
     else:
-        print(f"   Missing    : None")
+        print("   Missing    : None")
 
+    # Duplicate Rows
     dups = df.duplicated().sum()
+
     if dups > 0:
         print(f"   Duplicates : {dups}")
     else:
-        print(f"   Duplicates : None")
+        print("   Duplicates : None")
 
     # Merge category_translation into products
     if name == "products":
@@ -82,7 +109,7 @@ for name, path in tables.items():
 
         df.drop(columns=["product_category_name_english"], inplace=True)
 
-        print(f"   Category names merged successfully")
+        print("   Category names merged successfully")
         print(f"   Columns after merge : {list(df.columns)}")
 
         logging.info("products: category_translation merged, category names now in English")
@@ -91,13 +118,17 @@ for name, path in tables.items():
     out = f"data/processed/{name}.csv"
 
     if name == "category_translation":
-        print(f"   Note: category_translation merged into products - role complete")
+        print("   Note: category_translation merged into products - role complete")
         logging.info("category_translation: role complete after merge into products")
 
     df.to_csv(out, index=False)
+
     print(f"   Saved CSV -> {out}")
 
-    logging.info(f"{name} | {len(df):,} rows | {len(df.columns)} cols | missing: {missing.to_dict()} | dups: {dups}")
+    logging.info(
+        f"{name} | {len(df):,} rows | {len(df.columns)} cols | "
+        f"missing: {missing.to_dict()} | dups: {dups}"
+    )
 
 print("=" * 50)
 print("Stage 1 Complete! Check logs/ingestion_log.txt")
